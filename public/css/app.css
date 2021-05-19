@@ -10044,3 +10044,8 @@ h3 {
 .container .movie-show img {
   width: 100%;
 }
+
+.create-container {
+  margin: 0 auto;
+  width: 80%;
+}

@@ -1,18 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Movies</h1>
-        <div class="movie-block">
+@extends('layouts.main')
 
-        </div>
+@section('page-title')
+    Add New Movie
+@endsection
+
+@section('main-content')
+    <div class="create-container">
+        <form action="{{route('movies.store')}}" method="post">
+            @csrf
+            @method('POST')
+            <div class="form-group">
+                <label for="title">Titolo</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Aggiungi titolo">
+            </div>
+            <div class="form-group">
+                <label for="director">Regista</label>
+                <input type="text" class="form-control" name="director" id="director" placeholder="Aggiungi regista">
+            </div>
+            <div class="form-group">
+                <label for="genres">Genere</label>
+                <input type="text" class="form-control" name="genres" id="genres" placeholder="Aggiungi genere/i">
+            </div>
+            <div class="form-group">
+                <label for="poster">Poster</label>
+                <input type="text" class="form-control" name="poster" id="poster" placeholder="Aggiungi locandina">
+            </div>
+            <div class="form-group">
+                <label for="plot">Trama</label>
+                <textarea class="form-control" name="plot" id="plot" placeholder="Aggiungi trama" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
     
-</body>
-</html>
+@endsection
