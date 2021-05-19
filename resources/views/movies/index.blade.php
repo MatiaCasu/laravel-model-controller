@@ -14,6 +14,7 @@
     @foreach ($movies as $movie)
         <li>
             <img src="{{$movie->poster}}" alt="">
+            <h3>{{$movie->title}}</h3>
             <a href="{{route('movies.show', ['movie' => $movie->id])}}" class="btn btn-secondary">Show</a>
         </li>
     @endforeach

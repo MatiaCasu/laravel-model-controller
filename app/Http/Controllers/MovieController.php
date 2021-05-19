@@ -7,6 +7,13 @@ use App\Movie;
 
 class MovieController extends Controller
 {
+    protected $dataValidate = [
+        'title' => 'required|string|max:100',
+        'director' => 'required|string|max:60',
+        'genres' => 'required|string|max:60',
+        'plot' => 'required|string',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -42,13 +49,18 @@ class MovieController extends Controller
     {
         $data= $request->all();
 
+        $request->validate($this->dataValidate);
+
         $movieNew = new Movie();
 
         $movieNew->title = $data["title"];
         $movieNew->director = $data["director"];
         $movieNew->genres = $data["genres"];
-        $movieNew->poster = $data["poster"];
         $movieNew->plot = $data["plot"];
+
+        if ( empty($data['poster'])) {
+            unset($data['poster']);
+        }
 
         $movieNew->save();
 
