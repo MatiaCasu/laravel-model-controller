@@ -14,8 +14,6 @@ class MovieController extends Controller
      */
     public function index()
     {
-        /* Qui va la logica che mettevi nelle routes 
-        e il return di view, oggetti ecc...*/
 
         $movies = Movie::all();
 
@@ -31,7 +29,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movies.create');
     }
 
     /**
@@ -53,7 +51,9 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        $movie = Movie::find($id);
+
+        return view('movies.show', [ 'movie' => $movie]);
     }
 
     /**
